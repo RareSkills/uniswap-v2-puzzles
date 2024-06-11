@@ -12,21 +12,18 @@ contract SimpleSwapTest is Test {
     address public pool = 0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc;
 
     function setUp() public {
-        simpleSwap = new SimpleSwap(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+        simpleSwap = new SimpleSwap();
 
-        // transfers 1 ETH to simpleSwap contract
-        vm.deal(address(simpleSwap), 1 ether);
+        // transfers 1 WETH to simpleSwap contract
+        vm.prank(0xF04a5cC80B1E94C69B48f5ee68a08CD2F09A7c3E);
+        IUniswapV2Pair(weth).transfer(address(simpleSwap), 1 ether);
     }
 
     function test_PerformSwap() public {
-        address[] memory path = new address[](2);
-        path[0] = weth;
-        path[1] = usdc;
-
         vm.prank(address(0xb0b));
-        simpleSwap.performSwap(path);
+        simpleSwap.performSwap(pool, weth, usdc);
 
         uint256 puzzleBal = IUniswapV2Pair(usdc).balanceOf(address(simpleSwap));
-        require(puzzleBal > 0);
+        require(puzzleBal > 0, "Swap Failed.");
     }
 }

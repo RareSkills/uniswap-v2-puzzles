@@ -2,37 +2,27 @@
 pragma solidity ^0.8.13;
 
 import "./interfaces/IUniswapV2Pair.sol";
+import "./interfaces/IERC20.sol";
 
 contract SimpleSwap {
     /**
-     *  PERFORM A SIMPLE SWAP EXERCISE
+     *  PERFORM A SIMPLE SWAP WITHOUT ROUTER EXERCISE
      *
-     *  The contract has an initial balance of 1 ETH.
-     *  The challenge is to swap any amount of ETH for USDC token using Uniswapv2 router.
+     *  The contract has an initial balance of 1 WETH.
+     *  The challenge is to swap any amount of WETH for USDC token using the `swap` function
+     *  from USDC/WETH pool and a slippage of 0.3%.
      *
      */
-    address public immutable router;
+    function performSwap(address pool, address weth, address usdc) public {
+        /**
+         *     swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data);
+         *
+         *     amount0Out: the amount of USDC to receive from swap.
+         *     amount1Out: the amount of WETH to receive from swap.
+         *     to: recipient address to receive the USDC tokens.
+         *     data: leave it empty.
+         */
 
-    constructor(address _router) {
-        router = _router;
-    }
-
-    function performSwap(address[] calldata path) public {
         // your code start here
     }
-
-    receive() external payable {}
-}
-
-interface IUniswapV2Router {
-    /**
-     *     amountOutMin: the minimum amount of output tokens that must be received for the transaction not to revert.
-     *     path: an array of token addresses. In our case, WETH and USDC.
-     *     to: recipient address to receive the liquidity tokens.
-     *     deadline: timestamp after which the transaction will revert.
-     */
-    function swapExactETHForTokens(uint256 amountOutMin, address[] calldata path, address to, uint256 deadline)
-        external
-        payable
-        returns (uint256[] memory amounts);
 }

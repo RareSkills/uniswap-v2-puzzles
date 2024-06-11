@@ -32,5 +32,6 @@ If the test passes, RPC is working, else, it might have exceeded its rate limit 
 - [AddLiquid](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/AddLiquid.sol)
 - [AddLiquidWithRouter](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/AddLiquidWithRouter.sol)
 - [SimpleSwap](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/SimpleSwap.sol)
+- [SimpleSwapWithRouter](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/SimpleSwapWithRouter.sol)
 - [SandwichSwap](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/SandwichSwap.sol)
 - [MyMevBot](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/MyMevBot.sol)
