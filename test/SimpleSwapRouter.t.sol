@@ -27,6 +27,6 @@ contract SimpleSwapWithRouterTest is Test {
         simpleSwapWithRouter.performSwapWithRouter(path);
 
         uint256 puzzleBal = IUniswapV2Pair(usdc).balanceOf(address(simpleSwapWithRouter));
-        require(puzzleBal > 0);
+        require(puzzleBal > 0, "Swap Failed.");
     }
 }
