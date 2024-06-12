@@ -10,7 +10,7 @@ contract BurnLiquid {
      *
      *  The contract has an initial balance of 0.01 UNI-V2-LP tokens.
      *  Burn a position (remove liquidity) from USDC/ETH pool to this contract.
-     *  The challenge is to use rhe `burn` function in the pool contract to remove all the liquidity from the pool.
+     *  The challenge is to use the `burn` function in the pool contract to remove all the liquidity from the pool.
      *
      */
     function burnLiquidity(address pool) public {
