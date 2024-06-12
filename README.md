@@ -28,12 +28,12 @@ If the test passes, RPC is working, else, it might have exceeded its rate limit 
 
 ## Suggested order for the puzzles
 
-- [HelloWorld](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/HelloWorld.sol)
-- [AddLiquid](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/AddLiquid.sol)
-- [AddLiquidWithRouter](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/AddLiquidWithRouter.sol)
-- [BurnLiquid](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/BurnLiquid.sol)
-- [BurnLiquidWithRouter](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/BurnLiquidWithRouter.sol)
-- [SimpleSwap](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/SimpleSwap.sol)
-- [SimpleSwapWithRouter](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/SimpleSwapWithRouter.sol)
-- [SandwichSwap](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/SandwichSwap.sol)
-- [MyMevBot](https://github.com/tanim0la/uniswapV2-puzzles/blob/main/src/MyMevBot.sol)
+- [HelloWorld](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/HelloWorld.sol)
+- [AddLiquid](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/AddLiquid.sol)
+- [AddLiquidWithRouter](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/AddLiquidWithRouter.sol)
+- [BurnLiquid](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/BurnLiquid.sol)
+- [BurnLiquidWithRouter](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/BurnLiquidWithRouter.sol)
+- [SimpleSwap](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/SimpleSwap.sol)
+- [SimpleSwapWithRouter](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/SimpleSwapWithRouter.sol)
+- [SandwichSwap](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/SandwichSwap.sol)
+- [MyMevBot](https://github.com/RareSkills/uniswapV2-puzzles/blob/main/src/MyMevBot.sol)
