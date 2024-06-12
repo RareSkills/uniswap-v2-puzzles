@@ -32,8 +32,5 @@ contract BurnLiquidWithRouterTest is Test {
 
         assertEq(usdcBal, 1432558576085);
         assertEq(wethBal, 388231892770818155977);
-        // console2.log(usdcBal);
-        // console2.log(wethBal);
-        // require(usdcBal > 0 && wethBal > 0, "Burn Liquidity Failed.");
     }
 }
