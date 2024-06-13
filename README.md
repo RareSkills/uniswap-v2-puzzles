@@ -15,14 +15,14 @@
 The test forks mainnet so as to interact with contracts on a real network and also give a more realistic experience. Go to [Alchemy](https://alchemy.com) or [infura](https:/infura.io) 
 to get `your_mainnet_rpc_url`.
 ```shell
-$ forge test --fork-url <your_mainnet_rpc_url> --match-path test/<test_filename> -vvv
+$ forge test --fork-url <your_mainnet_rpc_url> --match-path test/<test_filename> 
 ```
 
 #### Test Your RPC with HelloWorld Puzzle
 
 Run the following command:
 ```shell
-$ forge test --fork-url <your_mainnet_rpc_url> --match-path test/HelloWorld.t.sol -vvv
+$ forge test --fork-url <your_mainnet_rpc_url> --match-path test/HelloWorld.t.sol
 ```
 If the test passes, RPC is working, else, it might have exceeded its rate limit or typo in the url.
 
@@ -37,3 +37,4 @@ If the test passes, RPC is working, else, it might have exceeded its rate limit 
 - [SimpleSwapWithRouter](https://github.com/RareSkills/uniswap-v2-puzzles/blob/main/src/SimpleSwapWithRouter.sol)
 - [SandwichSwap](https://github.com/RareSkills/uniswap-v2-puzzles/blob/main/src/SandwichSwap.sol)
 - [MyMevBot](https://github.com/RareSkills/uniswap-v2-puzzles/blob/main/src/MyMevBot.sol)
+- [SyncAndSkim](https://github.com/RareSkills/uniswap-v2-puzzles/blob/main/src/SyncAndSkim.sol)
