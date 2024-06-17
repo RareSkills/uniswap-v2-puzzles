@@ -23,8 +23,10 @@ contract AddLiquidWithRouterTest is Test {
     }
 
     function test_AddLiquidityWithRouter() public {
+        uint256 deadline = block.timestamp + 1 minutes;
+
         vm.prank(address(0xb0b));
-        addLiquidWithRouterAddress.addLiquidityWithRouter(usdc);
+        addLiquidWithRouterAddress.addLiquidityWithRouter(usdc, deadline);
 
         uint256 puzzleBal = IUniswapV2Pair(pool).balanceOf(address(0xb0b));
 

@@ -18,7 +18,7 @@ contract AddLiquidWithRouter {
         router = _router;
     }
 
-    function addLiquidityWithRouter(address usdcAddress) public {
+    function addLiquidityWithRouter(address usdcAddress, uint256 deadline) public {
         // your code start here
     }
 
