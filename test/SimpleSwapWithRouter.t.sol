@@ -23,8 +23,10 @@ contract SimpleSwapWithRouterTest is Test {
         path[0] = weth;
         path[1] = usdc;
 
+        uint256 deadline = block.timestamp + 1 minutes;
+
         vm.prank(address(0xb0b));
-        simpleSwapWithRouter.performSwapWithRouter(path);
+        simpleSwapWithRouter.performSwapWithRouter(path, deadline);
 
         uint256 puzzleBal = IUniswapV2Pair(usdc).balanceOf(address(simpleSwapWithRouter));
         require(puzzleBal > 0, "Swap Failed.");

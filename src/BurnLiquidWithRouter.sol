@@ -18,7 +18,7 @@ contract BurnLiquidWithRouter {
         router = _router;
     }
 
-    function burnLiquidityWithRouter(address pool, address usdc, address weth) public {
+    function burnLiquidityWithRouter(address pool, address usdc, address weth, uint256 deadline) public {
         // your code start here
     }
 }

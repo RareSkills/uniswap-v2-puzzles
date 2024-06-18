@@ -17,7 +17,7 @@ contract SimpleSwapWithRouter {
         router = _router;
     }
 
-    function performSwapWithRouter(address[] calldata path) public {
+    function performSwapWithRouter(address[] calldata path, uint256 deadline) public {
         // your code start here
     }
 

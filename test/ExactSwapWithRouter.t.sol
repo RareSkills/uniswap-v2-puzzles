@@ -21,8 +21,10 @@ contract ExactSwapTest is Test {
     }
 
     function test_PerformExactSwapWithRouter() public {
+        uint256 deadline = block.timestamp + 1 minutes;
+
         vm.prank(address(0xb0b));
-        exactSwapWithRouter.performExactSwapWithRouter(weth, usdc);
+        exactSwapWithRouter.performExactSwapWithRouter(weth, usdc, deadline);
 
         uint256 puzzleBal = IERC20(usdc).balanceOf(address(exactSwapWithRouter));
 

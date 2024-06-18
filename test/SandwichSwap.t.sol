@@ -27,13 +27,15 @@ contract SandwichSwapTest is Test {
         vm.prank(address(victim));
         IERC20(weth).approve(router, 1000 ether);
 
+        uint256 deadline = block.timestamp + 1 minutes;
+
         address[] memory path = new address[](2);
         path[0] = weth;
         path[1] = usdc;
 
-        attacker.frontrun(router, weth, usdc);
-        victim.performSwap(path);
-        attacker.backrun(router, weth, usdc);
+        attacker.frontrun(router, weth, usdc, deadline);
+        victim.performSwap(path, deadline);
+        attacker.backrun(router, weth, usdc, deadline);
 
         uint256 attackerBal = IERC20(weth).balanceOf(address(attacker));
         require(attackerBal > 1000 ether, "Sandwich Attack Failed.");

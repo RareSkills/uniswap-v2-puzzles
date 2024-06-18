@@ -15,12 +15,12 @@ import "./interfaces/IERC20.sol";
  */
 contract Attacker {
     // This function will be called before the victim's transaction.
-    function frontrun(address router, address weth, address usdc) public {
+    function frontrun(address router, address weth, address usdc, uint256 deadline) public {
         // your code here
     }
 
     // This function will be called after the victim's transaction.
-    function backrun(address router, address weth, address usdc) public {
+    function backrun(address router, address weth, address usdc, uint256 deadline) public {
         // your code here
     }
 }
@@ -32,10 +32,8 @@ contract Victim {
         router = _router;
     }
 
-    function performSwap(address[] calldata path) public {
-        IUniswapV2Router(router).swapExactTokensForTokens(
-            1000 * 1e18, 0, path, address(this), block.timestamp + 1 minutes
-        );
+    function performSwap(address[] calldata path, uint256 deadline) public {
+        IUniswapV2Router(router).swapExactTokensForTokens(1000 * 1e18, 0, path, address(this), deadline);
     }
 }
 

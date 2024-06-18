@@ -24,8 +24,10 @@ contract BurnLiquidWithRouterTest is Test {
     }
 
     function test_BurnLiquidityWithRouter() public {
+        uint256 deadline = block.timestamp + 1 minutes;
+
         vm.prank(address(0xb0b));
-        burnLiquidWithRouterAddress.burnLiquidityWithRouter(pool, usdc, weth);
+        burnLiquidWithRouterAddress.burnLiquidityWithRouter(pool, usdc, weth, deadline);
 
         uint256 usdcBal = IUniswapV2Pair(usdc).balanceOf(address(burnLiquidWithRouterAddress));
         uint256 wethBal = IUniswapV2Pair(weth).balanceOf(address(burnLiquidWithRouterAddress));
