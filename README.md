@@ -40,3 +40,4 @@ If the test passes, RPC is working, else, it might have exceeded its rate limit 
 - [SyncAndSkim](https://github.com/RareSkills/uniswap-v2-puzzles/blob/main/src/SyncAndSkim.sol)
 - [ExactSwap](https://github.com/RareSkills/uniswap-v2-puzzles/blob/main/src/ExactSwap.sol)
 - [ExactSwapWithRouter](https://github.com/RareSkills/uniswap-v2-puzzles/blob/main/src/ExactSwapWithRouter.sol)
+- [MultiHop](https://github.com/RareSkills/uniswap-v2-puzzles/blob/main/src/MultiHop.sol)
