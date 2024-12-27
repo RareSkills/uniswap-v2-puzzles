@@ -21,23 +21,19 @@ contract TwapTest is Test {
         twap = new Twap(pool);
 
         //**       ONE HOUR TWAP       **//
-
         vm.rollFork(20055371); // start block
         twap.first1HourSnapShot();
 
         vm.rollFork(20055671); // (start + 1 hour) block
         oneHourTwap = twap.second1HourSnapShot();
-
         //**      ONE HOUR TWAP END      **//
 
         //**      ONE DAY TWAP       **//
-
         vm.rollFork(20075371); // start block
         twap.first1DaySnapShot();
 
         vm.rollFork(20082571); // (start + 1 day) block
         oneDayTwap = twap.second1DaySnapShot();
-
         //**      ONE DAY TWAP END      **//
     }
 

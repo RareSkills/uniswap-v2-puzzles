@@ -15,8 +15,7 @@ contract SimpleSwapTest is Test {
         simpleSwap = new SimpleSwap();
 
         // transfers 1 WETH to simpleSwap contract
-        vm.prank(0xF04a5cC80B1E94C69B48f5ee68a08CD2F09A7c3E);
-        IUniswapV2Pair(weth).transfer(address(simpleSwap), 1 ether);
+        deal(weth, address(simpleSwap), 1 ether);
     }
 
     function test_PerformSwap() public {

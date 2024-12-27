@@ -16,8 +16,7 @@ contract ExactSwapTest is Test {
         exactSwapWithRouter = new ExactSwapWithRouter(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
 
         // transfers 1 WETH to exactSwapWithRouter contract
-        vm.prank(0xF04a5cC80B1E94C69B48f5ee68a08CD2F09A7c3E);
-        IERC20(weth).transfer(address(exactSwapWithRouter), 1 ether);
+        deal(weth, address(exactSwapWithRouter), 1 ether);
     }
 
     function test_PerformExactSwapWithRouter() public {

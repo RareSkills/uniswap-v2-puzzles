@@ -18,8 +18,7 @@ contract AddLiquidWithRouterTest is Test {
         vm.deal(address(addLiquidWithRouterAddress), 1 ether);
 
         // transfers 1000 USDC to addLiquidWithRouterAddress
-        vm.prank(0x4B16c5dE96EB2117bBE5fd171E4d203624B014aa);
-        IUniswapV2Pair(usdc).transfer(address(addLiquidWithRouterAddress), 1000 * 10 ** 6);
+        deal(usdc, address(addLiquidWithRouterAddress), 1000e6);
     }
 
     function test_AddLiquidityWithRouter() public {
@@ -30,6 +29,6 @@ contract AddLiquidWithRouterTest is Test {
 
         uint256 puzzleBal = IUniswapV2Pair(pool).balanceOf(address(0xb0b));
 
-        require(puzzleBal > 0);
+        require(puzzleBal > 0, "No LP tokens minted");
     }
 }

@@ -17,8 +17,7 @@ contract ExactSwapTest is Test {
         exactSwap = new ExactSwap();
 
         // transfers 1 WETH to exactSwap contract
-        vm.prank(0xF04a5cC80B1E94C69B48f5ee68a08CD2F09A7c3E);
-        IUniswapV2Pair(weth).transfer(address(exactSwap), 1 ether);
+        deal(weth, address(exactSwap), 1 ether);
     }
 
     function test_PerformExactSwap() public {

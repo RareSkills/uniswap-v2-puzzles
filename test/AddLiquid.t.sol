@@ -15,12 +15,10 @@ contract AddLiquidTest is Test {
         addLiquid = new AddLiquid();
 
         // transfers 1 WETH to addLiquid contract
-        vm.prank(0xF04a5cC80B1E94C69B48f5ee68a08CD2F09A7c3E);
-        IUniswapV2Pair(weth).transfer(address(addLiquid), 1 ether);
+        deal(weth, address(addLiquid), 1 ether);
 
         // transfers 1000 USDC to addLiquid contract
-        vm.prank(0x4B16c5dE96EB2117bBE5fd171E4d203624B014aa);
-        IUniswapV2Pair(usdc).transfer(address(addLiquid), 1000 * 10 ** 6);
+        deal(usdc, address(addLiquid), 1000e6);
     }
 
     function test_AddLiquidity() public {
@@ -30,7 +28,7 @@ contract AddLiquidTest is Test {
         vm.prank(address(0xb0b));
         addLiquid.addLiquidity(usdc, weth, pool, reserve0, reserve1);
 
-        uint256 foo = (1000 * 10 ** 6) - (IUniswapV2Pair(usdc).balanceOf(address(addLiquid)));
+        uint256 foo = (1000e6) - (IUniswapV2Pair(usdc).balanceOf(address(addLiquid)));
 
         uint256 puzzleBal = IUniswapV2Pair(pool).balanceOf(address(0xb0b));
 
@@ -38,8 +36,8 @@ contract AddLiquidTest is Test {
 
         uint256 expectBal = min((foo * _totalSupply) / (reserve0), (bar * _totalSupply) / (reserve1));
 
-        require(puzzleBal > 0);
-        assertEq(puzzleBal, expectBal);
+        require(puzzleBal > 0, "No LP tokens minted");
+        assertEq(puzzleBal, expectBal, "Incorrect LP tokens received");
     }
 
     // Internal function

@@ -17,10 +17,8 @@ contract SandwichSwapTest is Test {
         victim = new Victim(router);
 
         // set initial balance for attacker and victim contract
-        vm.startPrank(0xF04a5cC80B1E94C69B48f5ee68a08CD2F09A7c3E);
-        IERC20(weth).transfer(address(attacker), 1000 ether);
-        IERC20(weth).transfer(address(victim), 1000 ether);
-        vm.stopPrank();
+        deal(weth, address(attacker), 1000 ether);
+        deal(weth, address(victim), 1000 ether);
     }
 
     function test_PerformSandwichAttack() public {

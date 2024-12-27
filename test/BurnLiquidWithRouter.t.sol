@@ -19,8 +19,7 @@ contract BurnLiquidWithRouterTest is Test {
         burnLiquidWithRouterAddress = new BurnLiquidWithRouter(router);
 
         // transfers 0.01 UNI-V2-LP to BurnLiquidWithRouterAddress
-        vm.prank(0x18498Ab9931c671742C4fF0CA292c1876CaB7384);
-        IUniswapV2Pair(pool).transfer(address(burnLiquidWithRouterAddress), 0.01 ether);
+        deal(pool, address(burnLiquidWithRouterAddress), 0.01 ether);
     }
 
     function test_BurnLiquidityWithRouter() public {
@@ -32,7 +31,7 @@ contract BurnLiquidWithRouterTest is Test {
         uint256 usdcBal = IUniswapV2Pair(usdc).balanceOf(address(burnLiquidWithRouterAddress));
         uint256 wethBal = IUniswapV2Pair(weth).balanceOf(address(burnLiquidWithRouterAddress));
 
-        assertEq(usdcBal, 1432558576085);
-        assertEq(wethBal, 388231892770818155977);
+        assertEq(usdcBal, 1432558576085, "Incorrect USDC tokens received");
+        assertEq(wethBal, 388231892770818155977, "Incorrect WETH tokens received");
     }
 }

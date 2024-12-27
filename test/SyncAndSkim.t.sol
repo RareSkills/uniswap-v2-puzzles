@@ -42,11 +42,15 @@ contract SyncAndSkimTest is Test {
     function test_PerformSkim() public {
         skim = new Skim();
 
+        // Deal 0xBeeb with some tokens
+        deal(ampl, address(0xBeeb), 2500e9);
+        deal(weth, address(0xBeeb), 100 ether);
+
         // simulate positive rebase
-        vm.prank(0xF04a5cC80B1E94C69B48f5ee68a08CD2F09A7c3E);
+        vm.startPrank(address(0xBeeb));
         IUniswapV2Pair(weth).transfer(pool, 100 ether);
-        vm.prank(0x223592a191ECfC7FDC38a9256c3BD96E771539A9);
-        IUniswapV2Pair(ampl).transfer(pool, 2500 * 1e9);
+        IUniswapV2Pair(ampl).transfer(pool, 2500e9);
+        vm.stopPrank();
 
         skim.performSkim(pool);
 

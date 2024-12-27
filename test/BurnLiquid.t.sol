@@ -16,9 +16,8 @@ contract BurnLiquidTest is Test {
 
         burnLiquid = new BurnLiquid();
 
-        // transfers 0.01 UNI-V2-LP to BurnLiquid contract
-        vm.prank(0x18498Ab9931c671742C4fF0CA292c1876CaB7384);
-        IUniswapV2Pair(pool).transfer(address(burnLiquid), 0.01 ether);
+        // transfer 0.01 UNI-V2-LP to BurnLiquid contract
+        deal(pool, address(burnLiquid), 0.01 ether);
     }
 
     function test_BurnLiquidity() public {
@@ -28,7 +27,7 @@ contract BurnLiquidTest is Test {
         uint256 usdcBal = IUniswapV2Pair(usdc).balanceOf(address(burnLiquid));
         uint256 wethBal = IUniswapV2Pair(weth).balanceOf(address(burnLiquid));
 
-        assertEq(usdcBal, 1432558576085);
-        assertEq(wethBal, 388231892770818155977);
+        assertEq(usdcBal, 1432558576085, "Incorrect USDC tokens received");
+        assertEq(wethBal, 388231892770818155977, "Incorrect WETH tokens received");
     }
 }

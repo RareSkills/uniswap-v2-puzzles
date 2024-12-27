@@ -20,8 +20,7 @@ contract MultiHopTest is Test {
         multiHop = new MultiHop(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
 
         // transfers 10 MKR to multiHop contract
-        vm.prank(0x0a3f6849f78076aefaDf113F5BED87720274dDC0);
-        IERC20(mkr).transfer(address(multiHop), 10 ether);
+        deal(mkr, address(multiHop), 10 ether);
     }
 
     function test_PerformMultiHopWithRouter() public {
