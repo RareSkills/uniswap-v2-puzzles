@@ -8,8 +8,8 @@ import "../src/interfaces/IUniswapV2Pair.sol";
 contract SyncAndSkimTest is Test {
     Sync public sync;
     Skim public skim;
-    address public pool = 0xc5be99A02C6857f9Eac67BbCE58DF5572498F40c;
-    address public ampl = 0xD46bA6D942050d489DBd938a2C909A5d5039A161;
+    address public pool = 0x8A4c8008837366d5942D2Fa96d98f55CAF3adCa9;
+    address public rebase = 0x109909e1E4CeB8A89274bbdA937b02c3c62828c2;
     address public weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     uint256 r0;
@@ -25,43 +25,43 @@ contract SyncAndSkimTest is Test {
 
         // simulate negative rebase
         vm.startPrank(pool);
-        IUniswapV2Pair(ampl).transfer(address(0xdead), 1000 * 1e9);
-        IUniswapV2Pair(weth).transfer(address(0xdead), 50 ether);
+        IUniswapV2Pair(rebase).transfer(address(0xdead), 1000 ether);
+        IUniswapV2Pair(weth).transfer(address(0xdead), 20 ether);
         vm.stopPrank();
 
         sync.performSync(pool);
 
         uint256 wethBal = IUniswapV2Pair(weth).balanceOf(pool);
-        uint256 amplBal = IUniswapV2Pair(ampl).balanceOf(pool);
+        uint256 rebaseBal = IUniswapV2Pair(rebase).balanceOf(pool);
 
         (uint256 r00, uint256 r11,) = IUniswapV2Pair(pool).getReserves();
 
-        require(wethBal == r00 && amplBal == r11, "Sync Failed.");
+        require(rebaseBal == r00 && wethBal == r11, "Sync Failed.");
     }
 
     function test_PerformSkim() public {
         skim = new Skim();
 
         // Deal 0xBeeb with some tokens
-        deal(ampl, address(0xBeeb), 2500e9);
-        deal(weth, address(0xBeeb), 100 ether);
+        deal(rebase, address(0xBeeb), 2500 ether);
+        deal(weth, address(0xBeeb), 450 ether);
 
         // simulate positive rebase
         vm.startPrank(address(0xBeeb));
-        IUniswapV2Pair(weth).transfer(pool, 100 ether);
-        IUniswapV2Pair(ampl).transfer(pool, 2500e9);
+        IUniswapV2Pair(weth).transfer(pool, 450 ether);
+        IUniswapV2Pair(rebase).transfer(pool, 2500 ether);
         vm.stopPrank();
 
         skim.performSkim(pool);
 
         uint256 wethBal = IUniswapV2Pair(weth).balanceOf(pool);
-        uint256 amplBal = IUniswapV2Pair(ampl).balanceOf(pool);
+        uint256 rebaseBal = IUniswapV2Pair(rebase).balanceOf(pool);
 
-        require(wethBal == r0 && amplBal == r1, "Skim Failed.");
+        require(rebaseBal == r0 && wethBal == r1, "Skim Failed.");
 
         uint256 wethPuzzleBal = IUniswapV2Pair(weth).balanceOf(address(skim));
-        uint256 amplPuzzleBal = IUniswapV2Pair(ampl).balanceOf(address(skim));
+        uint256 rebasePuzzleBal = IUniswapV2Pair(rebase).balanceOf(address(skim));
 
-        require(wethPuzzleBal > 0 && amplPuzzleBal > 0, "Pool Differences Not Sent To Skim Contract.");
+        require(wethPuzzleBal > 0 && rebasePuzzleBal > 0, "Pool Differences Not Sent To Skim Contract.");
     }
 }
